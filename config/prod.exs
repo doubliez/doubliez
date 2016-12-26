@@ -21,6 +21,7 @@ config :doubliez, Doubliez.Endpoint,
   https: [port: 443,
           ip: {127, 0, 0, 1},
           compress: true,
+          otp_app: :doubliez,
           keyfile: System.get_env("SSL_KEY"),
           certfile: System.get_env("SSL_CERT"),
           cacertfile: System.get_env("SSL_CHAIN")]
