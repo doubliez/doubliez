@@ -14,7 +14,7 @@ use Mix.Config
 config :doubliez, Doubliez.Endpoint,
   url: [host: "doubliez.com", port: 80],
   cache_static_manifest: "priv/static/manifest.json",
-  force_ssl: true,
+  force_ssl: [],
   http: [port: {:system, "PORT"},
           ip: {0, 0, 0, 0, 0, 0, 0, 0},
           compress: true],
