@@ -14,7 +14,13 @@ use Mix.Config
 config :doubliez, Doubliez.Endpoint,
   http: [port: {:system, "PORT"}, ip: {0, 0, 0, 0, 0, 0, 0, 0}],
   url: [host: "doubliez.com", port: 80],
-  cache_static_manifest: "priv/static/manifest.json"
+  cache_static_manifest: "priv/static/manifest.json",
+  force_ssl: [],
+  https: [port: 443,
+          otp_app: :doubliez,
+          keyfile: System.get_env("SSL_KEY"),
+          certfile: System.get_env("SSL_CERT"),
+          cacertfile: System.get_env("SSL_CHAIN")]
 
 # Do not print debug messages in production
 config :logger, level: :info

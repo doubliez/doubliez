@@ -19,7 +19,7 @@ defmodule Doubliez.Mixfile do
   def application do
     [mod: {Doubliez, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :ssl]]
   end
 
   # Specifies which paths to compile per environment.
