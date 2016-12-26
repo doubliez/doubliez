@@ -1,0 +1,60 @@
+@import 'foundation/init';
+@import 'colors';
+
+#my-info {
+  background-color: $light-gray;
+
+  .profile.thumbnail {
+    margin-top: 1rem;
+  }
+
+  .social-list {
+    font-size: .9rem;
+
+    i {
+      color: $black;
+    }
+
+    .name {
+      margin-left: 4px;
+      font-size: .85rem;
+    }
+  }
+}
+
+.title-bar {
+  background-color: $d-gray;
+}
+
+#cat {
+  height: 200px;
+  fill: url("#gradient-1");
+  stroke: $d-terracotta-dark;
+  stroke-width: 3;
+  stroke-dasharray: 1500;
+  stroke-dashoffset: 1500;
+}
+
+.animate-draw {
+  fill-opacity: 0;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-iteration: 1;
+
+  animation-name: DrawLine, FadeStroke, FillIn;
+  animation-duration: 4s, 1s, 1s;
+  animation-delay: 1s, 3.5s, 3.5s;
+}
+
+@keyframes DrawLine {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes FadeStroke {
+  to { stroke-opacity: 0; }
+}
+
+@keyframes FillIn {
+  from { fill-opacity: 0; }
+  to { fill-opacity: 1; }
+}
