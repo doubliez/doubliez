@@ -3,7 +3,7 @@
     <div class="off-canvas position-left reveal-for-large" id="my-info" data-off-canvas data-position="left">
       <div class="row">
         <div class="column">
-          <img class="profile thumbnail" src="<%= static_path(@conn, "/images/profile.jpg") %>">
+          <img class="profile thumbnail" src="<%= static_path(@conn, "/images/profile.jpg") %>" alt="<%= full_name %>">
           <h5><%= full_name %></h5>
           <ul class="no-bullet social-list">
             <li>

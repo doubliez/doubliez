@@ -16,7 +16,7 @@
   </head>
 
   <body>
-    <main role="main">
+    <main>
       <%= render @view_module, @view_template, assigns %>
     </main>
 
