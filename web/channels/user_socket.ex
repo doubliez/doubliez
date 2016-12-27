@@ -2,7 +2,7 @@ defmodule Doubliez.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", Doubliez.RoomChannel
+  channel "room:*", Doubliez.RoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
