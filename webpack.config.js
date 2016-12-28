@@ -64,7 +64,6 @@ module.exports = function webpackConfig(options)
                 chunks: ['app', 'vendor']
             }),
             new ExtractTextPlugin('css/styles.css'),
-            new webpack.optimize.DedupePlugin(),
             new webpack.optimize.OccurrenceOrderPlugin(),
             new webpack.optimize.UglifyJsPlugin()
         ]
