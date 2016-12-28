@@ -65,7 +65,9 @@ module.exports = function webpackConfig(options)
             }),
             new ExtractTextPlugin('css/styles.css'),
             new webpack.optimize.OccurrenceOrderPlugin(),
-            new webpack.optimize.UglifyJsPlugin()
+            new webpack.optimize.UglifyJsPlugin({
+                compress: { warnings: false }
+            })
         ]
         : [
             new webpack.DefinePlugin(webpackDefine),
