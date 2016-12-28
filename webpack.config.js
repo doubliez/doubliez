@@ -6,7 +6,6 @@ module.exports = function webpackConfig(options)
 {
     const webpackDefine = {
         _ENV_: JSON.stringify(options.ENV),
-        _HMR_: !!options.HMR,
         _URL_: JSON.stringify(options.URL)
     };
 
@@ -53,6 +52,34 @@ module.exports = function webpackConfig(options)
             })
         :
             [{ loader: 'style-loader' }, ...styleLoader];
+
+    const plugins = options.ENV === 'prod'
+        ? [
+            new webpack.DefinePlugin(webpackDefine),
+            new webpack.ProvidePlugin({
+                jQuery: 'jquery'
+            }),
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'common',
+                chunks: ['app', 'vendor']
+            }),
+            new ExtractTextPlugin('css/styles.css'),
+            new webpack.optimize.DedupePlugin(),
+            new webpack.optimize.OccurrenceOrderPlugin(),
+            new webpack.optimize.UglifyJsPlugin()
+        ]
+        : [
+            new webpack.DefinePlugin(webpackDefine),
+            new webpack.ProvidePlugin({
+                jQuery: 'jquery'
+            }),
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'common',
+                chunks: ['app', 'vendor']
+            }),
+            new webpack.HotModuleReplacementPlugin(),
+            new webpack.NamedModulesPlugin()
+        ];
 
     return {
         entry,
@@ -116,18 +143,7 @@ module.exports = function webpackConfig(options)
                 }
             ]
         },
-        plugins: [
-            new webpack.DefinePlugin(webpackDefine),
-            new webpack.ProvidePlugin({
-                jQuery: 'jquery'
-            }),
-            new webpack.optimize.CommonsChunkPlugin({
-                name: 'common',
-                chunks: ['app', 'vendor']
-            }),
-            new ExtractTextPlugin('css/styles.css'),
-            new webpack.HotModuleReplacementPlugin()
-        ],
+        plugins,
         resolve: {
             modules: [
                 path.resolve('node_modules'),
