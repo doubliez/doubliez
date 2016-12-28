@@ -2,7 +2,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack:dev": "webpack --progress --env.ENV dev --env.URL http://localhost:4000",
-    "webpack:prod": "webpack --progress --env.ENV prod --env.URL https://thibault.doubliez.com"
+    "webpack:prod": "webpack --progress --env.ENV prod --env.URL https://doubliez.com"
   },
   "repository": {},
   "dependencies": {
