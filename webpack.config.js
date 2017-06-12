@@ -45,13 +45,11 @@ module.exports = function webpackConfig(options)
     ];
 
     const styleLoaders = options.ENV === 'prod'
-        ?
-            ExtractTextPlugin.extract({
-                fallbackLoader: 'style-loader',
-                loader: styleLoader
-            })
-        :
-            [{ loader: 'style-loader' }, ...styleLoader];
+        ? ExtractTextPlugin.extract({
+            fallbackLoader: 'style-loader',
+            loader: styleLoader
+        })
+        : [{ loader: 'style-loader' }, ...styleLoader];
 
     const plugins = options.ENV === 'prod'
         ? [

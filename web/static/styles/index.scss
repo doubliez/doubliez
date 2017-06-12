@@ -1,4 +1,5 @@
 @import 'foundation/init';
+@import 'foundation/responsive-blog-post/responsive-blog-post';
 @import 'colors';
 
 #my-info {
@@ -24,6 +25,10 @@
 
 .title-bar {
   background-color: $d-gray;
+}
+
+.posts {
+  padding-top: 1rem;
 }
 
 #cat {
