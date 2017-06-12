@@ -22,6 +22,11 @@ module.exports = function webpackConfig(options)
             entry['webpack-hot-reload'] = 'webpack/hot/only-dev-server';
     }
 
+    if (options.ENV === 'prod')
+    {
+        webpackDefine['process.env'] = { 'NODE_ENV': '"production"' };
+    }
+
     const devtool = options.ENV === 'prod'
         ? 'source-map'
         : 'module-source-map';
@@ -46,8 +51,8 @@ module.exports = function webpackConfig(options)
 
     const styleLoaders = options.ENV === 'prod'
         ? ExtractTextPlugin.extract({
-            fallbackLoader: 'style-loader',
-            loader: styleLoader
+            fallback: 'style-loader',
+            use: styleLoader
         })
         : [{ loader: 'style-loader' }, ...styleLoader];
 
