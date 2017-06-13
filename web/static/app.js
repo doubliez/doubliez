@@ -14,7 +14,10 @@ import PrismicApi from './prismic-api';
 
 import Main from './components/main';
 
-export const app = { };
+export const app = {
+    prismic: new PrismicApi()
+};
+
 // import { Socket } from 'phoenix';
 
 // function connect()
@@ -39,17 +42,14 @@ const App = () => (
     </Provider>
 );
 
-PrismicApi.initialize()
-    .then(prismic => {
-        app.prismic = prismic;
+app.prismic.initialize();
 
-        ReactDOM.render(
-            <App />,
-            document.getElementById('root')
-        );
+ReactDOM.render(
+    <App />,
+    document.getElementById('root')
+);
 
-        $(() => {
-            $(document).foundation();
-            // connect();
-        });
-    });
+$(() => {
+    $(document).foundation();
+    // connect();
+});

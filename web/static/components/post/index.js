@@ -4,9 +4,11 @@ import { app } from 'app';
 
 import moment from 'moment';
 
+import ErrorC from 'components/error';
 import NotFound from 'components/not-found';
 
-export default class Post extends React.Component {
+export default class Post extends React.Component
+{
     state = {
         post: null
     }
@@ -19,6 +21,9 @@ export default class Post extends React.Component {
             app.prismic.getPostById(uid)
                 .then(post => {
                     this.setState({ post });
+                })
+                .catch(() => {
+                    this.setState({ error: true });
                 });
         }
     }
@@ -27,7 +32,7 @@ export default class Post extends React.Component {
         return <div className="row">
             <div className="large-10 columns">
                 {
-                    !this.state.post ? <NotFound /> :
+                    !this.state.post ? this.state.error ? <ErrorC /> : <NotFound /> :
                         <div className="responsive-blog-post">
                             <div className="individual-post">
                                 <Link className="title"

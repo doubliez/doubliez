@@ -3,14 +3,13 @@ import { Route, Switch, Link } from 'react-router-dom';
 
 import config from 'config';
 
-
 import Sidebar from 'components/sidebar';
 import Posts from 'components/posts';
 import Post from 'components/post';
 import Preview from 'components/preview';
-import NotFound from 'components/not-found';
 
-export default class Main extends React.Component {
+export default class Main extends React.Component
+{
     render() {
         return <main>
             <div className="off-canvas-wrapper">
@@ -25,23 +24,25 @@ export default class Main extends React.Component {
                             </div>
                         </div>
 
-                        <Switch>
-                            <Route exact path="/" component={ Posts } />
-                            <Route exact path="/preview" component={ Preview } />
-                            <Route path="/:uid" render={ routeProps =>
-                                <div className="posts">
-                                    <div className="row">
-                                        <div className="column">
-                                            <div className="home">
-                                                <Link to="/">
-                                                    <i className="fa fa-home" />
-                                                </Link>
+                        <div className="content">
+                            <Switch>
+                                <Route exact path="/" component={ Posts } />
+                                <Route exact path="/preview" component={ Preview } />
+                                <Route path="/:uid" render={ routeProps =>
+                                    <div className="posts">
+                                        <div className="row">
+                                            <div className="column">
+                                                <div className="home">
+                                                    <Link to="/">
+                                                        <i className="fa fa-home" />
+                                                    </Link>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <Post { ...routeProps } />
-                                </div> } />
-                        </Switch>
+                                        <Post { ...routeProps } />
+                                    </div> } />
+                            </Switch>
+                        </div>
                     </div>
                 </div>
             </div>

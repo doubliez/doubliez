@@ -1,7 +1,8 @@
 import React from 'react';
 import config from 'config';
 
-export default class Sidebar extends React.Component {
+export default class Sidebar extends React.Component
+{
     render() {
         return <div className="off-canvas position-left reveal-for-large" id="my-info" data-off-canvas data-position="left">
             <div className="row">
